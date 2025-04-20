@@ -1,81 +1,74 @@
-import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Instagram, Twitter, Youtube, Github } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
+  
   return (
-    <footer className="bg-primary text-white">
+    <footer className="bg-black text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/placeholder.svg" alt="FastClient Logo" className="h-8 w-8" />
-              <span className="text-xl font-bold">FastClient</span>
+            <div className="mb-4">
+              <img 
+                src="https://cdn.poehali.dev/files/f6274bce-2087-4a2c-bd4d-e3c508601391.jpg" 
+                alt="FastClient Logo" 
+                className="h-16"
+              />
             </div>
-            <p className="mb-4 text-white/80 max-w-md">
-              FastClient - это премиум решение для игроков Minecraft 1.16.5, 
-              предоставляющее преимущества в PVP, поиске ресурсов и многом другом.
+            <p className="text-gray-400 mb-4">
+              FastClient — продвинутый чит-клиент для Minecraft 1.16.5, предоставляющий игрокам 
+              преимущество благодаря мощным функциям и инновационной защите от обнаружения.
             </p>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Twitter size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Youtube size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-primary transition-colors">
+                <Github size={20} />
+              </a>
+            </div>
           </div>
           
           <div>
-            <h3 className="font-bold text-lg mb-4">Ссылки</h3>
+            <h3 className="text-lg font-semibold mb-4">Быстрые ссылки</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Главная
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Возможности
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Цены
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Отзывы
-                </Link>
-              </li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Главная</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Возможности</a></li>
+              <li><a href="#pricing" className="text-gray-400 hover:text-primary transition-colors">Цены</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">FAQ</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-primary transition-colors">Поддержка</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="font-bold text-lg mb-4">Поддержка</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Контакты
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white/80 hover:text-white transition-colors">
-                  Политика конфиденциальности
-                </Link>
-              </li>
-            </ul>
+            <h3 className="text-lg font-semibold mb-4">Подпишитесь на новости</h3>
+            <p className="text-gray-400 mb-4">Получайте уведомления о новых обновлениях чита</p>
+            <div className="flex space-x-2">
+              <Input 
+                type="email" 
+                placeholder="Ваш email" 
+                className="bg-gray-800 border-gray-700"
+              />
+              <Button className="bg-primary hover:bg-primary/90">ОК</Button>
+            </div>
           </div>
         </div>
         
-        <div className="mt-12 pt-6 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <p>© {currentYear} FastClient™. Все права защищены.</p>
-            </div>
-            <div>
-              <p className="text-white/80">
-                FastClient не связан с Mojang AB
-              </p>
-            </div>
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <div className="text-gray-500 text-sm mb-4 md:mb-0">
+            &copy; {currentYear} FastClient. Все права защищены.
+          </div>
+          <div className="flex space-x-6">
+            <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">Политика конфиденциальности</a>
+            <a href="#" className="text-gray-500 hover:text-primary text-sm transition-colors">Условия использования</a>
           </div>
         </div>
       </div>

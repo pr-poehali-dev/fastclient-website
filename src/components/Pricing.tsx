@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Check } from "lucide-react";
+import { CheckCircle } from "lucide-react";
 
 const Pricing = () => {
   const plans = [
@@ -8,9 +8,10 @@ const Pricing = () => {
       price: "380",
       features: [
         "Полный доступ ко всем функциям",
-        "Обновления в течение месяца",
-        "Базовая техподдержка",
-        "Работает на сервере и в одиночной игре"
+        "Приватное сообщество",
+        "Регулярные обновления",
+        "Поддержка 24/7",
+        "Анти-детект система"
       ],
       popular: false
     },
@@ -19,73 +20,79 @@ const Pricing = () => {
       price: "500",
       features: [
         "Полный доступ ко всем функциям",
-        "Пожизненные обновления",
-        "Приоритетная техподдержка",
-        "Ранний доступ к новым функциям",
-        "Работает на сервере и в одиночной игре"
+        "Приватное сообщество",
+        "Все будущие обновления",
+        "Приоритетная поддержка 24/7",
+        "Расширенная анти-детект система",
+        "Эксклюзивные функции"
       ],
       popular: true
     }
   ];
 
   return (
-    <section className="py-16 bg-background" id="pricing">
+    <section id="pricing" className="py-16 bg-black occult-pattern">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Цены</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Выберите план, который подходит именно вам
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Тарифы</h2>
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+            Выберите подходящий план и получите доступ к FastClient уже сегодня
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+
+        <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
           {plans.map((plan, index) => (
             <div 
               key={index} 
-              className={`bg-card rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 ${
-                plan.popular ? "border-2 border-primary" : "border border-border"
+              className={`flex-1 rounded-xl overflow-hidden ${
+                plan.popular 
+                  ? 'bg-gradient-to-br from-primary/80 to-primary/20 border border-primary' 
+                  : 'bg-white/5 backdrop-blur-sm'
               }`}
             >
               {plan.popular && (
-                <div className="bg-primary text-white py-2 text-center font-medium">
-                  Рекомендуемый
+                <div className="bg-primary py-1 text-center">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-white">
+                    Рекомендуемый
+                  </span>
                 </div>
               )}
               
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-4">{plan.name}</h3>
+                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
                 <div className="mb-6">
-                  <span className="text-4xl font-bold">{plan.price}</span>
-                  <span className="text-lg ml-1">₽</span>
+                  <span className="text-4xl font-bold text-white">{plan.price}</span>
+                  <span className="text-xl text-white/80"> ₽</span>
                 </div>
                 
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start">
-                      <Check className="h-5 w-5 text-primary shrink-0 mr-2" />
-                      <span className="text-muted-foreground">{feature}</span>
+                <ul className="space-y-3 mb-6">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-start">
+                      <CheckCircle className="h-5 w-5 text-primary shrink-0 mr-2" />
+                      <span className="text-gray-300">{feature}</span>
                     </li>
                   ))}
                 </ul>
                 
-                <Button className="w-full text-lg py-6 h-auto">
-                  Купить {plan.name}
+                <Button className={`w-full py-6 h-auto ${
+                  plan.popular 
+                    ? 'bg-white text-primary hover:bg-gray-100' 
+                    : 'bg-primary text-white hover:bg-primary/90'
+                }`}>
+                  Купить сейчас
                 </Button>
+                
+                <div className="mt-4 text-center">
+                  <img 
+                    src="/placeholder.svg" 
+                    alt="Способы оплаты" 
+                    className="h-8 mx-auto opacity-70"
+                  />
+                  <p className="text-xs mt-2 text-gray-400">СБП и другие способы оплаты</p>
+                </div>
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-12 bg-secondary rounded-lg p-6 max-w-3xl mx-auto">
-          <h3 className="text-xl font-bold mb-4 text-center">Способы оплаты</h3>
-          <div className="flex justify-center items-center gap-6 flex-wrap">
-            <div className="bg-card p-3 rounded-md shadow-sm">
-              <span className="font-medium">СБП</span>
-            </div>
-            <div className="bg-card p-3 rounded-md shadow-sm">
-              <span className="font-medium">Банковская карта</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

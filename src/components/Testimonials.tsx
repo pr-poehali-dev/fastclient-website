@@ -1,55 +1,65 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Алексей",
+      name: "MineDestroyer",
+      avatar: "/placeholder.svg",
       rating: 5,
-      comment: "Потрясающий клиент! Использую FastClient уже два месяца, ни разу не было проблем с античитами. Особенно нравится ESP режим для поиска ресурсов."
+      text: "Лучший чит-клиент для Minecraft, который я когда-либо использовал. Анти-детект работает идеально, ни разу не поймали за полгода использования."
     },
     {
-      name: "Дмитрий",
+      name: "PvPMaster1337",
+      avatar: "/placeholder.svg",
       rating: 5,
-      comment: "Лучший чит для PVP, который я пробовал. AimBot работает так естественно, что никто не заподозрит использование читов. Стоит своих денег!"
+      text: "Благодаря FastClient я стал непобедим в PvP. ESP функция позволяет видеть врагов издалека, а настройки боя дают огромное преимущество."
     },
     {
-      name: "Игорь",
+      name: "DiamondHunter",
+      avatar: "/placeholder.svg",
       rating: 4,
-      comment: "Отличная производительность даже на слабых компьютерах. Купил навсегда и не жалею. Техподдержка быстро отвечает на вопросы."
+      text: "Отличный функционал для поиска ресурсов. Нахожу алмазы за считанные минуты. Иногда бывают небольшие лаги, но в целом все супер."
     }
   ];
 
-  const renderStars = (count: number) => {
-    return Array(5).fill(0).map((_, i) => (
-      <Star 
-        key={i} 
-        className={`h-5 w-5 ${i < count ? "text-yellow-400 fill-yellow-400" : "text-gray-300"}`} 
-      />
-    ));
-  };
-
   return (
-    <section className="py-16 bg-muted" id="testimonials">
+    <section className="py-16 bg-card occult-pattern">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Отзывы пользователей</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Что говорят наши клиенты</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Что говорят клиенты о FastClient
+            Отзывы реальных пользователей FastClient
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="flex items-center mb-4">
-                  {renderStars(testimonial.rating)}
+            <div 
+              key={index} 
+              className="bg-black/40 backdrop-blur-sm p-6 rounded-lg transition-all hover:bg-primary/10"
+            >
+              <div className="flex justify-between items-start mb-4">
+                <div className="flex items-center">
+                  <div className="h-10 w-10 rounded-full bg-primary/20 mr-3 overflow-hidden">
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <span className="font-semibold">{testimonial.name}</span>
                 </div>
-                <p className="text-muted-foreground mb-6">"{testimonial.comment}"</p>
-                <div className="font-semibold">{testimonial.name}</div>
-              </CardContent>
-            </Card>
+                <div className="flex">
+                  {[...Array(5)].map((_, i) => (
+                    <Star 
+                      key={i} 
+                      className={`h-4 w-4 ${i < testimonial.rating ? 'text-primary fill-primary' : 'text-gray-400'}`} 
+                    />
+                  ))}
+                </div>
+              </div>
+              <p className="text-muted-foreground">{testimonial.text}</p>
+            </div>
           ))}
         </div>
       </div>
