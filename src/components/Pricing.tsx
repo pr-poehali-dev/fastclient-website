@@ -4,6 +4,18 @@ import { CheckCircle } from "lucide-react";
 const Pricing = () => {
   const plans = [
     {
+      name: "HWID",
+      price: "300",
+      features: [
+        "Привязка к устройству (HWID)",
+        "Полный доступ ко всем функциям",
+        "Приватное сообщество",
+        "Регулярные обновления",
+        "Анти-детект система"
+      ],
+      popular: false
+    },
+    {
       name: "1 месяц",
       price: "380",
       features: [
@@ -40,7 +52,7 @@ const Pricing = () => {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row gap-8 max-w-4xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <div 
               key={index} 
